@@ -1,4 +1,4 @@
-import { firebaseApp } from "../App"
+import { firebaseApp } from "../Firebase.config.jsx"
 import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore } from "firebase/firestore"
 import { useEffect, useState } from "react"
 
@@ -42,7 +42,7 @@ export const Registro = () => {
             value={email}
             onChange={e => setEmail(e.target.value)}
             />
-            <input type="text" 
+            <input type="password" 
             placeholder="Senha"
             value={senha}
             onChange={e => setSenha(e.target.value)}
