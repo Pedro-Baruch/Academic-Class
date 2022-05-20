@@ -1,22 +1,8 @@
-import ReactDOM from 'react-dom';
-import './../pages/RegistroStyle.css';
+import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { initializeApp } from "firebase/app"
-import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore } from 'firebase/firestore';
-import { async } from '@firebase/util';
-
-import { useNavigate } from 'react-router-dom'
-
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyBeUZICL0_YOZXyjMCXqEn4JTRjCBF9G5k",
-  authDomain: "registro-591d2.firebaseapp.com",
-  projectId: "registro-591d2",
-
-});
-
-
-
-
+import { useNavigate } from 'react-router-dom';
+import { db } from '../services/firebase-config';
+import './../pages/RegistroStyle.css';
 
 
 export const Home = () => {
@@ -25,7 +11,6 @@ export const Home = () => {
   const [descrição, setDescrição] = useState("");
   const [users, setUsers] = useState([]);
 
-  const db = getFirestore(firebaseApp);
   const usersCollectionRef = collection(db, "criar");
 
   async function criarDado() {

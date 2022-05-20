@@ -1,82 +1,61 @@
-import React from 'react';
+import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
-import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react';
-import { initializeApp } from "firebase/app"
-import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore } from 'firebase/firestore';
-import { async } from '@firebase/util';
-
-const firebaseApp = initializeApp({
-    apiKey: "AIzaSyBeUZICL0_YOZXyjMCXqEn4JTRjCBF9G5k",
-    authDomain: "registro-591d2.firebaseapp.com",
-    projectId: "registro-591d2",
-  
-  });
-  
 
 export function Criar() {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    const db = getFirestore(firebaseApp);
-    const usercollectionRef = collection(db, 'criar')
+  const usercollectionRef = collection(db, 'criar')
   
     
-    const [nome, setName] = useState('');
-    const [descrição, setDescrição] = useState('');
-    const [users, SetUser] = useState('');
+  const [nome, setName] = useState('');
+  const [descrição, setDescrição] = useState('');
+  const [users, SetUser] = useState('');
     
   
    
   
-    useEffect(() => {
-      const getUsers = async () => {
-        const data = await getDocs(usercollectionRef)
-  
-        SetUser(console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
-      };
-      getUsers();
-    }, []);
-  
-  
-    const handleChange = (e) => {
-      setName(e.target.value);
-    }
-  
-    const handleDescriçãoChange = (e) => {
-      setDescrição(e.target.value);
-    }
-  
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(usercollectionRef)
+      SetUser(console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
+    };
     
+    getUsers();
+  }, []);
+
+
+  const handleChange = (e) => {
+    setName(e.target.value);
+  }
+
+  const handleDescriçãoChange = (e) => {
+    setDescrição(e.target.value);
+  }
   
-  
-    const handleSubmit = (e) => {
-  
-  
-      alert('Conta criada com sucesso');
-  
-      e.preventDefault();
-  
-    }
-  
-    async function CriarTurma() {
-  
-      const user = await addDoc(usercollectionRef, {
-        nome,
-        descrição,
-  
-      });
-      console.log(user);
-      navigate(-1)
-      
-    }
-  
-  
-    async function deleteUser(id) {
-      const userDoc = doc(db, 'registro', id);
-      await deleteDoc(userDoc);
-    }
+  const handleSubmit = (e) => {
+    alert('Conta criada com sucesso');
+    e.preventDefault();
+  }
+
+  async function CriarTurma() {
+
+    const user = await addDoc(usercollectionRef, {
+      nome,
+      descrição,
+
+    });
+    console.log(user);
+    navigate(-1)
     
+  }
   
+  async function deleteUser(id) {
+    const userDoc = doc(db, 'registro', id);
+    await deleteDoc(userDoc);
+  }
       
   return (
     <div class="container">

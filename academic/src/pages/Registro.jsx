@@ -1,17 +1,8 @@
-import { useNavigate } from 'react-router-dom'
+import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useNavigate } from 'react-router-dom';
+import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
-import { initializeApp } from "firebase/app"
-import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore } from 'firebase/firestore';
-import { async } from '@firebase/util';
-
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyBeUZICL0_YOZXyjMCXqEn4JTRjCBF9G5k",
-  authDomain: "registro-591d2.firebaseapp.com",
-  projectId: "registro-591d2",
-
-});
 
 
 
@@ -23,7 +14,6 @@ export const Registro = () => {
   const [users, SetUser] = useState('');
 
 
-  const db = getFirestore(firebaseApp);
   const usercollectionRef = collection(db, 'registro')
 
 
