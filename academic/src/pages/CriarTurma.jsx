@@ -80,7 +80,7 @@ export function Criar() {
 
         <form onSubmit={(e) => { handleSubmit(e) }}>
           { }
-          <h1 className='registro-titulo'>Criar  Turma </h1>
+          <h1 className='registro-titulo'>Criar Turma </h1>
 
 
           <label className='registro-texto'>

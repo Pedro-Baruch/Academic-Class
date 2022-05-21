@@ -1,6 +1,8 @@
 import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ColunaTumas } from '../componentes/ColunaTurmas';
+import { Footer } from '../componentes/Footer';
 import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
 
@@ -41,25 +43,9 @@ export const Home = () => {
 
   return (
     <div class="container">
-
       <div class="row">
-        <aside class="coluna-turma">
-          <ul class="coluna-lista">
-            <li class="coluna-item" id="coluna-topico"><a href="home-page.html">Turmas</a></li>
-            <li class="coluna-item" id="coluna-subtopico"><a href="publicacao-turma.html">Turma 01</a></li>
-            <li class="coluna-item" id="coluna-subtopico"><a href="">NomeTurma</a></li>
-            <li class="coluna-item" id="coluna-subtopico"><a href="">NomeTurma</a></li>
-          </ul>
-          <ul class="coluna-lista">
-            <li class="coluna-item" id="coluna-topico"><a href="">T.Encerradas</a></li>
-          </ul>
-          <ul class="coluna-lista">
-            <li class="coluna-item" id="coluna-topico"><a href="">Configurações</a></li>
-          </ul>
-        </aside>
+        <ColunaTumas/>
         <main class="turma-card">
-
-
           <ul class="card">
             <li className="card-imagem"><a href="#"><img class="banner-imagem" src="https://st.depositphotos.com/1002326/5133/v/450/depositphotos_51331625-stock-illustration-open-book-with-summer-landscape.jpg" alt="" /></a></li>
             <li className="card-item">
@@ -83,9 +69,9 @@ export const Home = () => {
           
         </main>
       </div>
-
-
-    </div>);
+      <Footer/>
+    </div>
+  );
 }
 
 export default Home;

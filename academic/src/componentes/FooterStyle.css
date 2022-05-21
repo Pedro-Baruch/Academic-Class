@@ -1,16 +1,12 @@
 .rodape{
-    display: flex;
-    flex-basis: 100%;
-    background-color: #2D2D29;
-  }
-  
-  .rodape a{
-    font-family: 'sen',sans-serif;
-    color: white;
-    text-decoration: none;
-    padding: 5px;
-  }
-  
-  body{
-    background-color: #9490C9;
-  }
+  display: flex;
+  flex-basis: 100%;
+  background-color: #2D2D29;
+}
+
+.rodape a{
+  font-family: 'sen',sans-serif;
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+}
