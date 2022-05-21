@@ -67,12 +67,7 @@ export const Registro = () => {
       senha,
 
     });
-    console.log(user);
-    if (nome == null || email == null || senha == null){
-      return console.error("oi")
-    }else{
-      navigate('home')
-    }
+    navigate('home')
   }
 
 
