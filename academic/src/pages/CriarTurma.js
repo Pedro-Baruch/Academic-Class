@@ -46,13 +46,10 @@ export function Criar() {
       setDescrição(e.target.value);
     }
   
-    
-  
-  
     const handleSubmit = (e) => {
   
   
-      alert('Conta criada com sucesso');
+      alert('Turma criada com sucesso');
   
       e.preventDefault();
   
@@ -103,8 +100,7 @@ export function Criar() {
           { }
           <h1 className='registro-titulo'>Criar  Turma </h1>
 
-
-          <label className='registro-texto'>
+          <label className='registro-texto'>º
             Name:
           </label><br />
           <input className='registro-campo' type="text" value={nome}
@@ -121,7 +117,6 @@ export function Criar() {
         </form>
             </header>
       </div>
-     
     </div>
   )
 }

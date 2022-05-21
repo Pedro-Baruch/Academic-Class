@@ -14,11 +14,6 @@ const firebaseApp = initializeApp({
 
 });
 
-
-
-
-
-
 export const Home = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
