@@ -388,37 +388,45 @@ li {
 }
 
 /* pagina pessoas */
+
+.pessoas-turma{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  background-color: #e7eaf1;
+  min-height: 100vh;
+}
+
 .pessoas{
   display: flex;
-  flex-basis: 100%;
-  flex-wrap: wrap;
-  flex-grow: 2;
-  flex-direction:row;
-  justify-content:center;
-  min-height: 100vh;
-  background-color: #e7eaf1;
-  border-bottom: #000000 solid 1px;
+  flex-basis: 80%;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
-.pessoas{
-  font-family:'sen',sans-serif;
-  font-size: large;
+.pessoas-objeto{
+  margin-top: 15px;
 }
 
-.inicio-barra h1,h2,h3{
-  display:inline;
-  margin-right:25px;
-  justify-content: space-around;
+.pessoas-titulo{
+  border-bottom: solid 1px black;
+  margin-top: 20px;
 }
 
-.professor{
-  margin-top:40px;
-  text-align: left;
+.foto-pessoas{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin: 0 10px 10px 0;
+  float: left;
+  margin-left: 5%;
+  border: solid 1px black;
 }
 
-.aluno{
-  margin-top:20px;
-  text-align: left;
+.nome-pessoas{
+  font-size: 120%;
+  padding-top: 15px;
 }
 
 /*rodape*/
