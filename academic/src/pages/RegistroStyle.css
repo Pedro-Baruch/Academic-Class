@@ -429,6 +429,39 @@ li {
   padding-top: 15px;
 }
 
+/* Pagina de atividades */
+
+.atividades-turma{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  background-color: #e7eaf1;
+  min-height: 100vh;
+}
+
+.atividades{
+  display: flex;
+  flex-basis: 80%;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.atividades-titulo{
+  border-bottom: solid 1px black;
+  margin-top: 20px;
+}
+
+.atividades-objeto{
+  display: flex;
+  flex-direction: row;
+  font-size: 120%;
+  justify-content:space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 05px;
+}
+
 /*rodape*/
 .rodape{
   display: flex;
@@ -446,6 +479,7 @@ li {
 body{
   background-color: #9490C9;
 }
+
 .registro-turma{
   display: flex;
   flex-direction: row;
@@ -455,9 +489,6 @@ body{
   padding: 0px 100px 500px 15px;
   justify-content: center;
   font-size: calc(10px + 2vmin);
- 
- 
-  
 }
 
  
