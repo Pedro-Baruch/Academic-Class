@@ -324,59 +324,15 @@ li {
 }
 
 /* pagina criar postagem*/
-.criar{
+
+.criar-post{
   display: flex;
+  flex-direction: column;
   flex-basis: 100%;
-  flex-wrap: wrap;
-  flex-grow: 2;
-  flex-direction: row;
-  justify-content: space-around;
-  min-height: 100vh;
   background-color: #e7eaf1;
-  align-items: left;
+  min-height: 100vh;
 }
 
-.criar{
-  font-size: large;      
-  font-family:'sen',sans-serif;
-}
-
-.tittle-criação{
-  padding-top:20px;
-}
-
-.tittle-tipo{
-  padding-top:20px;    
-}
-
-.tittle-descri{    
-  padding-top:10px;
-}
-
-.espaço-descri{
-  background-color:gray;
-  height:100px;
-  border-radius:2px;
-  font-family: 'sen',sans-serif;
-  font-size: medium;
-}
-
-.tittle-entrega{
-  padding-top:20px;
-}
-
-.tittle-grupo{
-  padding-top:20px;
-  padding-bottom:20px;
-}
-
-.tittle-tam-group{
-  padding-top:20px;
-}
-
-.tittle-finalizar{
-  padding-top:15px; 
-}
 
 .tipo-button{
   padding-left:10px;   
@@ -462,6 +418,21 @@ li {
   margin-top: 05px;
 }
 
+/* Botão criar */
+
+.botao-criar{
+  display: flex;
+  border-radius: 7px;
+}
+
+.botao{
+  display: flex;
+  padding-left: 20px;
+  text-decoration: none;
+  color: #000000;
+  font-size: 25px;
+}
+
 /*rodape*/
 .rodape{
   display: flex;
@@ -479,6 +450,8 @@ li {
 body{
   background-color: #9490C9;
 }
+
+/*Registro*/
 
 .registro-turma{
   display: flex;
@@ -507,7 +480,6 @@ body{
   
 }
   
- 
 .campo-reg{
   padding: 0px 15px;
   background-color: rgb(255, 255, 255);

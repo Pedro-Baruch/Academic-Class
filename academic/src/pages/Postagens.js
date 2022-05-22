@@ -13,6 +13,9 @@ export function Post(){
             <section class="info-turma">
                 <h2>Turma 01</h2>
                 <p>Descrição da turma</p>
+                <div className='botao-criar'>
+                    <a className='botao' href="http://localhost:3000/home/criarPost" >+</a>
+                </div>
             </section>
             <div className="posts">
                 <div className='post'>

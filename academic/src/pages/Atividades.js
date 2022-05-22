@@ -10,6 +10,9 @@ export function Atividades(){
                 <a href="http://localhost:3000/home/pessoas">Pessoas</a>
                 <a href="http://localhost:3000/home/atividade">Atividades</a>
             </nav>
+            <div className='botao-criar'>
+                    <a className='botao' href="http://localhost:3000/home/criarAtv" >+</a>
+                </div>
             <div className='atividades'>
                 <h2 className='atividades-titulo'>Atividades</h2>
                 <ul className='atividades-objeto'>
