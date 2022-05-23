@@ -1,95 +1,56 @@
-import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db } from '../services/firebase-config';
+import { useAuth } from '../contexts/AuthContext';
 import './../pages/RegistroStyle.css';
 
 
 export const Registro = () => {
   const navigate = useNavigate()
-  const [nome, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setPassword] = useState('');
-  const [users, SetUser] = useState('');
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const passwordConfirmRef = useRef()
+  const { signup } = useAuth()
 
+  async function handleSubmit(e) {
+    e.preventDefault()
 
-  const usercollectionRef = collection(db, 'users')
-
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usercollectionRef)
-
-      SetUser(console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
-    };
-    getUsers();
-  }, []);
-
-
-  const handleChange = (e) => {
-    setName(e.target.value);
-  }
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  }
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  }
-
-  const handleSubmit = (e) => {
-    alert('Conta criada com sucesso');
+    if(passwordRef.current.value !== passwordConfirmRef.current.value){
+      return alert("Senha não corresponde")
+    }
     
-    e.preventDefault();
-  }
-
-  async function CriarUser() {
-
-    if(!(nome && email && senha)) {
-      return
+    try {
+      signup(emailRef.current.value, passwordRef.current.value) 
+      navigate('home')
+    } catch {
+      alert('Falha em fazer o cadrastro!')
     }
 
-    await addDoc(usercollectionRef, {
-      nome,
-      email,
-      senha,
-    });
-    
-    navigate('home')
+
   }
 
-
-  async function deleteUser(id) {
-    const userDoc = doc(db, 'registro', id);
-    await deleteDoc(userDoc);
-  }
   
   return (
     <div className="container">
       <div className="container-registro">
         <header className="registro">
-          <form onSubmit={(e) => { handleSubmit(e) }}>
+          <form onSubmit= { handleSubmit}>
             <h1 className='registro-titulo'> Registro </h1>
-
-            <label className='registro-texto'> Name: </label><br />
-            <input 
-              className='registro-campo' type="text" value={nome}
-              required onChange={(e) => { handleChange(e) }} 
-            /><br />
 
             <label className='registro-texto'>Email: </label><br />
             <input 
-              className='registro-campo' type="email" value={email}
-              required onChange={(e) => { handleEmailChange(e) }} 
+              className='registro-campo' type="email" ref={emailRef}
             /><br />
 
-            <label className='registro-texto'>Password: </label><br />
+            <label className='registro-texto'>Senha: </label><br />
             <input 
-              className='registro-campo' type="password" value={senha}
-              required onChange={(e) => { handlePasswordChange(e) }} 
+              className='registro-campo' type="password" ref={passwordRef} 
             /><br />
-            <button className='registro-button' onClick={CriarUser}>Submit</button>
+
+            <label className='registro-texto'>Confirmar Senha: </label><br />
+            <input 
+              className='registro-campo' type="password" ref={passwordConfirmRef} 
+            /><br />
+            <button className='registro-button'>Increver-se</button>
           </form>
         </header>
       </div>
