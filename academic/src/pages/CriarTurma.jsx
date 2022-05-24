@@ -1,6 +1,7 @@
 import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
 
@@ -8,11 +9,13 @@ export function Criar() {
   const navigate = useNavigate()
 
   const usercollectionRef = collection(db, 'criar')
+  const turmacollectionRef = collection(db, 'turma')
   
     
   const [nome, setName] = useState('');
   const [descrição, setDescrição] = useState('');
   const [users, SetUser] = useState('');
+  const {currentUser} = useAuth()
     
   
    
@@ -41,10 +44,15 @@ export function Criar() {
   }
 
   async function CriarTurma() {
-
+    const data = await getDocs(usercollectionRef)
     const user = await addDoc(usercollectionRef, {
-      nome,
-      descrição,
+      admin: currentUser.uid,
+      nome: nome,
+      descrição: descrição,
+      atividades: [],
+      post: [],
+      users: []
+
 
     });
     console.log(user);

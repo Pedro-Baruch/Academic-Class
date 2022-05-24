@@ -1,8 +1,10 @@
 import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CardTurmaItem } from '../componentes/CardTurmaItem';
 import { ColunaTumas } from '../componentes/ColunaTurmas';
 import { Footer } from '../componentes/Footer';
+import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
 
@@ -12,6 +14,7 @@ export const Home = () => {
   const [name, setName] = useState("");
   const [descrição, setDescrição] = useState("");
   const [users, setUsers] = useState([]);
+  const {currentUser, signup} = useAuth()
 
   const usersCollectionRef = collection(db, "criar");
 
@@ -33,7 +36,8 @@ export const Home = () => {
       const data = await getDocs(usersCollectionRef);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-    getUsers();
+
+    return getUsers
   }, []);
 
   async function deleteUser(id) {
@@ -55,18 +59,9 @@ export const Home = () => {
          
             {users.map((user) => {
               return (
-                <>
-                  <ul class='card'>
-                    <li><img class="banner-imagem" src="https://st.depositphotos.com/1002326/5133/v/450/depositphotos_51331625-stock-illustration-open-book-with-summer-landscape.jpg" /></li>
-                    <li className="card-item" id="titulo-card">{user.nome}</li>
-                    <li className="card-item" id="descricao-card">{user.descrição}</li>
-                  </ul>
-
-                </>
+                <CardTurmaItem user={user} />
               );
             })}
-
-          
         </main>
       </div>
       <Footer/>

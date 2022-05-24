@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarStyle from './../pages/RegistroStyle.css'
+import './NavbarStyle.css';
 
 export const Navbar = () => {
 return(
