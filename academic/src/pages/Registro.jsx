@@ -9,30 +9,15 @@ export const Registro = () => {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { signup } = useAuth()
+  const { signup, user } = useAuth()
 
   async function handleSubmit(e) {
     e.preventDefault()
-
-    if(!(emailRef.current.value && passwordRef.current.value && passwordConfirmRef.current.value)){
-      return alert('Todos os campos devem ser preenchidos!')
-    }
     
-    if(passwordRef.current.value.length < 6){
-      return alert('A senha deve ter 6 ou mais caracteres!')
+    if(!user){
+      await signup()
     }
-
-    if(passwordRef.current.value !== passwordConfirmRef.current.value){
-      return alert("A confiramação de senha não corresponde com senha!")
-    }
-    
-    try {
-      signup(emailRef.current.value, passwordRef.current.value) 
-      navigate('home')
-    } catch {
-      alert('Falha em fazer o cadrastro!')
-    }
-
+    navigate('home')
 
   }
 

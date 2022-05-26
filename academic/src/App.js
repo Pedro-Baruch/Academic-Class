@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Navbar } from './componentes/Navbar'
 import { AuthProvider } from "./contexts/AuthContext"
 import { Criar } from './pages/CriarTurma'
 import { Home } from './pages/Home'
@@ -11,7 +10,6 @@ function App() {
     <>
       <BrowserRouter>
         <AuthProvider>
-          <Navbar/>
           <Routes>
             <Route path='/' element ={<Registro/>} />
             <Route path='home' element ={<Home/>} />

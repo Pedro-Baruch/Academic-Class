@@ -1,6 +1,6 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
+import { onAuthStateChanged, signInWithPopup } from "firebase/auth"
 import React, { useContext, useEffect, useState } from "react"
-import { auth } from "../services/firebase-config"
+import { auth, provider } from "../services/firebase-config"
 
 const AuthContext = React.createContext()
 
@@ -9,26 +9,52 @@ export function useAuth() {
 }
 
 export function AuthProvider ({children}) {
-    const [currentUser, setCurrentUser] = useState()
+    const [user, setUser] = useState()
 
-    function signup(email, password) {
-        return createUserWithEmailAndPassword(auth, email, password)
+    async function signup() {
+        const result = await signInWithPopup(auth, provider)
+        if(result.user) {
+            const {displayName, photoURL, uid, email} = result.user
+            
+            if(!displayName && !photoURL) {
+                throw new Error("Faltando informações da conta no Google")
+            }
+
+            setUser({
+                id: uid,
+                name: displayName,
+                avatar: photoURL,
+                email: email
+            })
+        }
+        
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) =>{
-            setCurrentUser(user)
+            if(user) {
+                const {displayName, photoURL, uid, email} = user
+
+                if(!displayName && !photoURL) {
+                    throw new Error("Faltando informações da conta no Google")
+                }
+
+                setUser({
+                    id: uid,
+                    name: displayName,
+                    avatar: photoURL,
+                    email: email
+                })
+            }
+            
+            
         })
         
         return unsubscribe
     }, [])
 
-    const value = {
-        currentUser,
-        signup
-    }
     return (
-        <AuthContext.Provider value={value}>
+        <AuthContext.Provider value={{user, signup}}>
             {children}
         </AuthContext.Provider>
     )

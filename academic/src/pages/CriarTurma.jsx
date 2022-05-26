@@ -1,6 +1,8 @@
 import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ColunaTumas } from '../componentes/ColunaTurmas';
+import { Navbar } from '../componentes/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
@@ -67,23 +69,9 @@ export function Criar() {
       
   return (
     <div class="container">
-      
+      <Navbar/>
       <div class="row">
-        <aside class="coluna-turma">
-          <ul class="coluna-lista">
-            <li class="coluna-item" id="coluna-topico"><a href="home-page.html">Turmas</a></li>
-            <li class="coluna-item" id="coluna-subtopico"><a href="publicacao-turma.html">Turma 01</a></li>
-            <li class="coluna-item" id="coluna-subtopico"><a href="">NomeTurma</a></li>
-            <li class="coluna-item" id="coluna-subtopico"><a href="">NomeTurma</a></li>
-          </ul>
-          <ul class="coluna-lista">
-            <li class="coluna-item" id="coluna-topico"><a href="">T.Encerradas</a></li>
-          </ul>
-          <ul class="coluna-lista">
-            <li class="coluna-item" id="coluna-topico"><a href="">Configurações</a></li>
-          </ul>
-        </aside>
-
+        <ColunaTumas/>
         <header className="registro-turma">
 
         <form onSubmit={(e) => { handleSubmit(e) }}>
