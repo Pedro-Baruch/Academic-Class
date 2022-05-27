@@ -9,6 +9,7 @@ li {
   box-sizing: border-box;
 }
 
+<<<<<<< Updated upstream
 /*deficção container*/
 .container{
   display: flex;
@@ -17,6 +18,8 @@ li {
   height: 100vh;
 }
 
+=======
+>>>>>>> Stashed changes
 /*navbar*/
 .navbar{
   display: flex;
@@ -50,6 +53,7 @@ li {
   flex-basis: 100%;
 }
 
+<<<<<<< Updated upstream
 /*coluna esquerda*/
 .coluna-turma{
   display: flex;
@@ -92,6 +96,8 @@ li {
   text-decoration: none;
 }
 
+=======
+>>>>>>> Stashed changes
 /*config da home page*/
 /*cards das turmas*/
 .turma-card{
@@ -169,66 +175,8 @@ li {
 }
 
 /*config da pagina de registro*/
-.container-registro{
-  display: flex;
-  height: 700px;
-  width: 600px;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 113px;
- 
-}
 
-.registro{
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  align-items:center;
-  background-color: black;
-  border-radius: 10px;
-  padding: 20px 30px 20px 30px;
-  justify-content: center;
-  font-size: calc(10px + 2vmin)
-}
 
-.registro-texto,.registro-titulo{
-  color: white;
-  font-family: 'Sen',sans-serif;
-  margin: 15px 0px 15px 0px;
-}
-
-.registro-titulo{
-  font-size: 48px;
-}
-
-.registro-texto{
-  font-size: 24px;
-}
-
-.registro-campo{
-  padding: 5px 30px;
-  background-color: rgb(255, 255, 255);
-  border: none;
-  outline-style: none;
-  color: rgb(0, 0, 0);
-  text-align: left;
-
-}
-
-.registro-button{
-  padding: 12px 30px;
-  width: 40%;
-  margin-top: 30px;
-  background-color: #6C69DC;
-  font-family: 'Sen',sans-serif;
-  font-size: 24px;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  flex-shrink: 1;
-  min-width:125px;
-  
-}
 
 /*Postagem*/
 
