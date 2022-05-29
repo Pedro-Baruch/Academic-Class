@@ -1,33 +1,27 @@
 /*navbar*/
 .navbar{
-    display: flex;
-    flex-basis: 100%;
-    background-color: #2D2D29;
-    padding: 5px 20px 5px 20px;
-    justify-content: space-between;
-    align-items: center;
-    height: 79px;
-  }
-  
-  .navbar-item{
-    display: inline;
-  }
-  
-  .navbar-titulo a{
-    font-family: 'Sen',sans-serif;
-    text-decoration: none;
-    color: white;
-    font-size: 30px;
-  }
-  
-  .imagem-perfil{
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
-  }
-  
-  .row{
-    display: flex;
-    flex-basis: 100%;
-  }
-  
+  display: flex;
+  flex-basis: 100%;
+  background-color: #2D2D29;
+  padding: 5px 20px 5px 20px;
+  justify-content: space-between;
+  align-items: center;
+  height: 79px;
+}
+
+.navbar-item{
+  display: inline;
+}
+
+.navbar-titulo a{
+  font-family: 'Sen',sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+}
+
+.imagem-perfil{
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}

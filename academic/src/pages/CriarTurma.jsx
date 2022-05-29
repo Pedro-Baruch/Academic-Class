@@ -1,0 +1,102 @@
+import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ColunaTumas } from '../componentes/ColunaTurmas';
+import { Navbar } from '../componentes/Navbar';
+import { useAuth } from '../contexts/AuthContext';
+import { db } from '../services/firebase-config';
+import './../pages/RegistroStyle.css';
+
+export function Criar() {
+  const navigate = useNavigate()
+
+  const usercollectionRef = collection(db, 'criar')
+  const turmacollectionRef = collection(db, 'turma')
+  
+    
+  const [nome, setName] = useState('');
+  const [descrição, setDescrição] = useState('');
+  const [users, SetUser] = useState('');
+  const {currentUser} = useAuth()
+    
+  
+   
+  
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(usercollectionRef)
+      SetUser(console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
+    };
+    
+    getUsers();
+  }, []);
+
+
+  const handleChange = (e) => {
+    setName(e.target.value);
+  }
+
+  const handleDescriçãoChange = (e) => {
+    setDescrição(e.target.value);
+  }
+  
+  const handleSubmit = (e) => {
+    alert('Conta criada com sucesso');
+    e.preventDefault();
+  }
+
+  async function CriarTurma() {
+    const data = await getDocs(usercollectionRef)
+    const user = await addDoc(usercollectionRef, {
+      admin: currentUser.uid,
+      nome: nome,
+      descrição: descrição,
+      atividades: [],
+      post: [],
+      users: []
+
+
+    });
+    console.log(user);
+    navigate(-1)
+    
+  }
+  
+  async function deleteUser(id) {
+    const userDoc = doc(db, 'registro', id);
+    await deleteDoc(userDoc);
+  }
+      
+  return (
+    <div class="container">
+      <Navbar/>
+      <div class="row">
+        <ColunaTumas/>
+        <header className="registro-turma">
+
+        <form onSubmit={(e) => { handleSubmit(e) }}>
+          { }
+          <h1 className='registro-titulo'>Criar Turma </h1>
+
+          <label className='registro-texto'>º
+            Name:
+          </label><br />
+          <input className='registro-campo' type="text" value={nome}
+            required onChange={(e) => { handleChange(e) }} /><br />
+
+          <label className='registro-texto'>
+            descrição:
+          </label><br />
+          <input className='campo-reg' type="descrição" value={descrição}
+            required onChange={(e) => { handleDescriçãoChange(e) }} /><br />
+
+          <button className='registro-button-reg' onClick={CriarTurma}>Criar</button>
+
+        </form>
+            </header>
+      </div>
+    </div>
+  )
+}
+
+export default Criar;

@@ -1,38 +1,24 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { Registro } from "./pages/Registro"
-import { Home } from './pages/Home'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { AuthProvider } from "./contexts/AuthContext"
 import { Criar } from './pages/CriarTurma'
-import { Footer } from './componentes/Footer'
-import { Navbar } from './componentes/Navbar'
-import { Post } from "./pages/Postagens"
-import { Atividades } from "./pages/Atividades"
-import { Pessoas } from "./pages/Pessoas"
-import { CriarPost } from "./pages/CriarPostagens"
-import { CriarAtv } from "./pages/CriarAtividades"
+import { Home } from './pages/Home'
+import { Registro } from "./pages/Registro"
 
 
 function App() {
-    return (
-        <>
-    <BrowserRouter>
-        <Navbar/>
-        <Routes>
-    
-    <Route path='/' element ={<Registro/>} />
-    <Route path='home' element ={<Home/>} />
-    <Route path='home/criar' element ={<Criar/>} />
-    <Route path='home/post' element ={<Post/>} />
-    <Route path='home/atividade' element ={<Atividades/>} />
-    <Route path='home/pessoas' element ={<Pessoas/>} />
-    <Route path='home/criarPost' element ={<CriarPost/>} />
-    <Route path='home/criarAtv' element ={<CriarAtv/>} />
-    
-        </Routes>
-    
-        <Footer/>
-    </BrowserRouter>
-        </>
-      )
+  return (
+    <>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path='/' element ={<Registro/>} />
+            <Route path='home' element ={<Home/>} />
+            <Route path='home/criar' element ={<Criar/>} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </>
+  )
 }
 
 

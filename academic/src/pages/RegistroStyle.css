@@ -2,21 +2,10 @@ li {
   list-style-type: none;
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  border: none; outline: none;
-  box-sizing: border-box;
-}
 
 <<<<<<< Updated upstream
 /*deficção container*/
-.container{
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  height: 100vh;
-}
+
 
 =======
 >>>>>>> Stashed changes
@@ -55,46 +44,7 @@ li {
 
 <<<<<<< Updated upstream
 /*coluna esquerda*/
-.coluna-turma{
-  display: flex;
-  flex-basis: 15%;
-  background-color: #97B3E9;
-  flex-direction: column;
-  flex-grow: 2;
-  border-left: #4A1AD3 solid 17px;
-}
 
-.coluna-item{
-  margin-bottom: 15px;
-}
-
-.coluna-lista{
-  padding-top: 30px;
-}
-
-#coluna-topico{
-  background-color: #2541D0;
-  border-radius: 0px 10px 10px 0px;
-  padding: 15px;
-  margin-right: 10px;
-}
-
-#coluna-topico a{
-  color: white;
-  text-decoration: none;
-}
-
-#coluna-subtopico{
-  background-color: #5A7FDF;
-  border-radius: 0px 10px 10px 0px;
-  padding: 15px;
-  margin-right: 25px;
-}
-
-#coluna-subtopico a{
-  color: white;
-  text-decoration: none;
-}
 
 =======
 >>>>>>> Stashed changes
@@ -382,24 +332,7 @@ li {
 }
 
 /*rodape*/
-.rodape{
-  display: flex;
-  flex-basis: 100%;
-  background-color: #2D2D29;
-}
 
-.rodape a{
-  font-family: 'sen',sans-serif;
-  color: white;
-  text-decoration: none;
-  padding: 5px;
-}
-
-body{
-  background-color: #9490C9;
-}
-
-/*Registro*/
 
 .registro-turma{
   display: flex;
