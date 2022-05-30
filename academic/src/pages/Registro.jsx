@@ -1,6 +1,8 @@
+import { doc, setDoc } from 'firebase/firestore';
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
 
 
@@ -16,8 +18,18 @@ export const Registro = () => {
     
     if(!user){
       await signup()
+    }else {
+      await setDoc(doc(db, "users", user.id), {
+        name: user.name,
+        avatar: user.avatar,
+        email: user.email
+      });
+      
+      navigate('home')
+
     }
-    navigate('home')
+
+
 
   }
 
