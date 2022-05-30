@@ -8,7 +8,7 @@ export function useAuth() {
     return useContext(AuthContext)
 }
 
-export function AuthProvider ({children}) {
+export function AuthProvider (props) {
     const [user, setUser] = useState()
 
     async function signup() {
@@ -45,17 +45,17 @@ export function AuthProvider ({children}) {
                     avatar: photoURL,
                     email: email
                 })
-            }
-            
-            
+            }   
         })
         
-        return unsubscribe
+        return () => { 
+            unsubscribe()
+        }
     }, [])
 
     return (
-        <AuthContext.Provider value={{user, signup}}>
-            {children}
+        <AuthContext.Provider value={{user, signup, setUser}}>
+            {props.children}
         </AuthContext.Provider>
     )
 }

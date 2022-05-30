@@ -22,7 +22,7 @@ export const Registro = () => {
       await setDoc(doc(db, "users", user.id), {
         name: user.name,
         avatar: user.avatar,
-        email: user.email
+        email: user.email,
       });
       
       navigate('home')
