@@ -8,9 +8,9 @@ export function CriarPost(){
             <form>
                 <h1>Criar Post</h1>
                 <label>Titulo: </label>
-                <input></input>
+                <input/>
                 <label>descrição: </label>
-                <input></input>
+                <input/>
             </form>
         </div>
     )

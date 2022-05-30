@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CardTurmaItem } from '../componentes/CardTurmaItem';
@@ -17,21 +17,7 @@ export const Home = () => {
   const [turmas, setTurmas] = useState([]);
   const {currentUser, signup} = useAuth()
 
-  const usersCollectionRef = collection(db, "criar");
-
-  async function criarDado() {
-    try {
-      const turma = await addDoc(collection(db, "turma"), {
-        id: 
-        name,
-        descrição,
-      });
-
-      console.log("dados salvos com sucessos", turma);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  }
+  const usersCollectionRef = collection(db, "turma");
 
   useEffect(() => {
     const getUsers = async () => {
@@ -71,5 +57,3 @@ export const Home = () => {
     </div>
   );
 }
-
-export default Home;
