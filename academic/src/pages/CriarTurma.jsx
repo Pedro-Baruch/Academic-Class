@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
+import { addDoc, arrayUnion, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ColunaTumas } from '../componentes/ColunaTurmas';
@@ -7,24 +7,21 @@ import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
 
-export function Criar() {
+export const Criar = () => {
   const navigate = useNavigate()
-
-  const usercollectionRef = collection(db, 'criar')
-  const turmacollectionRef = collection(db, 'turma')
   
-    
   const [nome, setName] = useState('');
   const [descrição, setDescrição] = useState('');
   const [users, SetUser] = useState('');
-  const {currentUser} = useAuth()
-    
+  const { signup, currentUser, user} = useAuth()
+
   
-   
+  const usercollectionRef = doc(db, 'users', user.id)
+  const turmacollectionRef = collection(db, 'turma')
   
   useEffect(() => {
     const getUsers = async () => {
-      const data = await getDocs(usercollectionRef)
+      const data = await getDocs(turmacollectionRef)
       SetUser(console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
     };
     
@@ -40,27 +37,54 @@ export function Criar() {
     setDescrição(e.target.value);
   }
   
-  const handleSubmit = (e) => {
-    alert('Conta criada com sucesso');
+  async function handleSubmit(e) {
     e.preventDefault();
-  }
 
-  async function CriarTurma() {
-    const data = await getDocs(usercollectionRef)
-    const user = await addDoc(usercollectionRef, {
-      admin: currentUser.uid,
+    const turma = await addDoc(turmacollectionRef, {
+      admin: user.id,
       nome: nome,
       descrição: descrição,
       atividades: [],
       post: [],
-      users: []
-
-
+      users: [user.id,]
     });
-    console.log(user);
+
+    await updateDoc(usercollectionRef, {
+      turmas: arrayUnion({
+        turmaId: turma.id,
+      })
+      
+      
+    })
+    //console.log(turma);
     navigate(-1)
-    
   }
+
+  /*async function CriarTurma() {
+
+    if(!currentUser){
+      await signup()
+    }else {
+      const turma = await addDoc(turmacollectionRef, {
+        admin: currentUser.id,
+        nome: nome,
+        descrição: descrição,
+        atividades: [],
+        post: [],
+        users: [currentUser.id,]
+      });
+  
+      await updateDoc(db, "users", currentUser.id, {
+        turmas: arrayUnion({
+          turmaId: turma.id,
+          nome: turma.nome
+        })
+      })
+      console.log(turma);
+      navigate(-1)
+    }
+    
+  }*/
   
   async function deleteUser(id) {
     const userDoc = doc(db, 'registro', id);
@@ -74,7 +98,7 @@ export function Criar() {
         <ColunaTumas/>
         <header className="registro-turma">
 
-        <form onSubmit={(e) => { handleSubmit(e) }}>
+        <form onSubmit={ handleSubmit }>
           { }
           <h1 className='registro-titulo'>Criar Turma </h1>
 
@@ -90,7 +114,7 @@ export function Criar() {
           <input className='campo-reg' type="descrição" value={descrição}
             required onChange={(e) => { handleDescriçãoChange(e) }} /><br />
 
-          <button className='registro-button-reg' onClick={CriarTurma}>Criar</button>
+          <button className='registro-button-reg' /*onClick={CriarTurma}*/>Criar</button>
 
         </form>
             </header>
@@ -98,5 +122,3 @@ export function Criar() {
     </div>
   )
 }
-
-export default Criar;
