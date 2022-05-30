@@ -26,7 +26,7 @@ export const Criar = () => {
     };
     
     getUsers();
-  }, []);
+  }, [currentUser?.id]);
 
 
   const handleChange = (e) => {
@@ -41,12 +41,12 @@ export const Criar = () => {
     e.preventDefault();
 
     const turma = await addDoc(turmacollectionRef, {
-      admin: user.id,
+      admin: [{user: user.id, avatar: user.avatar, name: user.name}],
       nome: nome,
       descrição: descrição,
       atividades: [],
       post: [],
-      users: [user.id,]
+      users: [{user: user.id, avatar: user.avatar, name: user.name},]
     });
 
     await updateDoc(usercollectionRef, {

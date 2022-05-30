@@ -2,7 +2,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { db } from "../services/firebase-config";
 
-export function CardTurmaItem (props ) {
+export function CardTurmaItem (props) {
     const navigate = useNavigate();
     const sfDocRef = doc(db, "turma", props.user.id);
 

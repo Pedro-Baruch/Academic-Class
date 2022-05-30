@@ -13,7 +13,7 @@ return(
         <li className="navbar-titulo"><Link to="/home">Academic Class</Link></li>
     </ul>
     <div className="navbar-item" >
-        <a href="#"> <img className="imagem-perfil" src={user.avatar} alt="imagem-perfil" /></a>
+        <a href="#"> <img className="imagem-perfil" src={user?.avatar} alt="imagem-perfil" /></a>
     </div>
 </nav>
 
