@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
-import './../pages/RegistroStyle.css';
+import './RegistroStyles.css';
 
 
 export const Registro = () => {
