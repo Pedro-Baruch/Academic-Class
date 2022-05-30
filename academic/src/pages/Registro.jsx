@@ -20,6 +20,7 @@ export const Registro = () => {
       await signup()
     }else {
       await setDoc(doc(db, "users", user.id), {
+        id: user.id,
         name: user.name,
         avatar: user.avatar,
         email: user.email,
