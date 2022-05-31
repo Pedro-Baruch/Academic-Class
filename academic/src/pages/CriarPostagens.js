@@ -51,7 +51,7 @@ export function CriarPost(){
     
         });
         console.log(user);
-        navigate('/home/post')
+        navigate(-1)
         
       }
 
