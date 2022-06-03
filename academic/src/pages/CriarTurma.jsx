@@ -40,51 +40,29 @@ export const Criar = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const turma = await addDoc(turmacollectionRef, {
+    const newTurma = await addDoc(turmacollectionRef, {
       admin: [{user: user.id, avatar: user.avatar, name: user.name}],
       nome: nome,
       descrição: descrição,
       atividades: [],
       post: [],
-      users: [{user: user.id, avatar: user.avatar, name: user.name},]
-    });
+      users: [{user: user.id, avatar: user.avatar, name: user.name},],
+      data: new Date()
+
+    })
 
     await updateDoc(usercollectionRef, {
       turmas: arrayUnion({
-        turmaId: turma.id,
+        turmaId: newTurma.id,
+        nome: nome,
+        descrição: descrição
       })
       
       
     })
-    //console.log(turma);
     navigate(-1)
   }
 
-  /*async function CriarTurma() {
-
-    if(!currentUser){
-      await signup()
-    }else {
-      const turma = await addDoc(turmacollectionRef, {
-        admin: currentUser.id,
-        nome: nome,
-        descrição: descrição,
-        atividades: [],
-        post: [],
-        users: [currentUser.id,]
-      });
-  
-      await updateDoc(db, "users", currentUser.id, {
-        turmas: arrayUnion({
-          turmaId: turma.id,
-          nome: turma.nome
-        })
-      })
-      console.log(turma);
-      navigate(-1)
-    }
-    
-  }*/
   
   async function deleteUser(id) {
     const userDoc = doc(db, 'registro', id);
@@ -114,7 +92,7 @@ export const Criar = () => {
           <input className='campo-reg' type="descrição" value={descrição}
             required onChange={(e) => { handleDescriçãoChange(e) }} /><br />
 
-          <button className='registro-button-reg' /*onClick={CriarTurma}*/>Criar</button>
+          <button className='registro-button-reg'>Criar</button>
 
         </form>
             </header>
