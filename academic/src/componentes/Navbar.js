@@ -1,14 +1,19 @@
 import React from "react";
-import NavbarStyle from './../pages/RegistroStyle.css'
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import './NavbarStyle.css';
 
 export const Navbar = () => {
+    const navigate = useNavigate();
+    const {user} = useAuth()
+    
 return(
 <nav className="navbar">
     <ul className="navbar-item">
-        <li className="navbar-titulo"><a href="http://localhost:3000/home">Academic Class</a></li>
+        <li className="navbar-titulo"><Link to="/home">Academic Class</Link></li>
     </ul>
     <div className="navbar-item" >
-        <a href="#"><img className="imagem-perfil" src="https://thumbs.dreamstime.com/b/imagem-nima-do-perfil-do-homem-de-neg%C3%B3cio-57594504.jpg" alt="imagem-perfil" /></a>
+        <a href="#"> <img className="imagem-perfil" src={user?.avatar} alt="imagem-perfil" /></a>
     </div>
 </nav>
 

@@ -1,38 +1,33 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { Registro } from "./pages/Registro"
-import { Home } from './pages/Home'
-import { Criar } from './pages/CriarTurma'
-import { Footer } from './componentes/Footer'
-import { Navbar } from './componentes/Navbar'
-import { Post } from "./pages/Postagens"
-import { Atividades } from "./pages/Atividades"
-import { Pessoas } from "./pages/Pessoas"
-import { CriarPost } from "./pages/CriarPostagens"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { AuthProvider } from "./contexts/AuthContext"
+import { Atividades } from './pages/Atividades'
 import { CriarAtv } from "./pages/CriarAtividades"
+import { Criar } from './pages/CriarTurma'
+import { Home } from './pages/Home'
+import { Pessoas } from "./pages/Pessoas"
+import { Registro } from "./pages/Registro"
+import { Turma } from "./pages/Turma"
 
 
 function App() {
-    return (
-        <>
-    <BrowserRouter>
-        <Navbar/>
-        <Routes>
-    
-    <Route path='/' element ={<Registro/>} />
-    <Route path='home' element ={<Home/>} />
-    <Route path='home/criar' element ={<Criar/>} />
-    <Route path='home/post' element ={<Post/>} />
-    <Route path='home/atividade' element ={<Atividades/>} />
-    <Route path='home/pessoas' element ={<Pessoas/>} />
-    <Route path='home/criarPost' element ={<CriarPost/>} />
-    <Route path='home/criarAtv' element ={<CriarAtv/>} />
-    
-        </Routes>
-    
-        <Footer/>
-    </BrowserRouter>
-        </>
-      )
+  return (
+    <>
+      <BrowserRouter>
+        <AuthProvider>
+          
+          <Routes>
+            <Route path='/' element ={<Registro/>} />
+            <Route path='home' element ={<Home/>} />
+            <Route path='home/criar' element ={<Criar/>} />
+            <Route path='home/turma/:id' element ={<Turma/>} />
+            <Route path='home/turma/:id/atividades' element ={<Atividades/>} />
+            <Route path='home/turma/:id/atividades/criar' element ={<CriarAtv />} />
+            <Route path='home/turma/:id/pessoas' element ={<Pessoas/>} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </>
+  )
 }
 
 

@@ -1,8 +1,8 @@
-import './../pages/RegistroStyle.css';
-import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
-import { useNavigate } from 'react-router-dom'
+import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './../pages/RegistroStyle.css';
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBeUZICL0_YOZXyjMCXqEn4JTRjCBF9G5k",
@@ -61,12 +61,9 @@ export function CriarPost(){
             <form>
                 <h1>Criar Post</h1>
                 <label>Titulo: </label>
-                <input value={title}
-            required onChange={(e) => { handleChange(e) }} /><br />
+                <input/>
                 <label>descrição: </label>
-                <input  value={descrição}
-            required onChange={(e) => { handleDescriçãoChange(e) }} /><br />
-                <button onClick={CriarPost}>Criar</button>
+                <input/>
             </form>
         </div>
     )

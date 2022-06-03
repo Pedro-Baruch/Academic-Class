@@ -2,20 +2,9 @@ li {
   list-style-type: none;
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  border: none; outline: none;
-  box-sizing: border-box;
-}
 
 /*deficção container*/
-.container{
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  height: 100vh;
-}
+
 
 /*navbar*/
 .navbar{
@@ -51,46 +40,7 @@ li {
 }
 
 /*coluna esquerda*/
-.coluna-turma{
-  display: flex;
-  flex-basis: 15%;
-  background-color: #97B3E9;
-  flex-direction: column;
-  flex-grow: 2;
-  border-left: #4A1AD3 solid 17px;
-}
 
-.coluna-item{
-  margin-bottom: 15px;
-}
-
-.coluna-lista{
-  padding-top: 30px;
-}
-
-#coluna-topico{
-  background-color: #2541D0;
-  border-radius: 0px 10px 10px 0px;
-  padding: 15px;
-  margin-right: 10px;
-}
-
-#coluna-topico a{
-  color: white;
-  text-decoration: none;
-}
-
-#coluna-subtopico{
-  background-color: #5A7FDF;
-  border-radius: 0px 10px 10px 0px;
-  padding: 15px;
-  margin-right: 25px;
-}
-
-#coluna-subtopico a{
-  color: white;
-  text-decoration: none;
-}
 
 /*config da home page*/
 /*cards das turmas*/
@@ -169,72 +119,13 @@ li {
 }
 
 /*config da pagina de registro*/
-.container-registro{
-  display: flex;
-  height: 700px;
-  width: 600px;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 113px;
- 
-}
 
-.registro{
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  align-items:center;
-  background-color: black;
-  border-radius: 10px;
-  padding: 20px 30px 20px 30px;
-  justify-content: center;
-  font-size: calc(10px + 2vmin)
-}
 
-.registro-texto,.registro-titulo{
-  color: white;
-  font-family: 'Sen',sans-serif;
-  margin: 15px 0px 15px 0px;
-}
-
-.registro-titulo{
-  font-size: 48px;
-}
-
-.registro-texto{
-  font-size: 24px;
-}
-
-.registro-campo{
-  padding: 5px 30px;
-  background-color: rgb(255, 255, 255);
-  border: none;
-  outline-style: none;
-  color: rgb(0, 0, 0);
-  text-align: left;
-
-}
-
-.registro-button{
-  padding: 12px 30px;
-  width: 40%;
-  margin-top: 30px;
-  background-color: #6C69DC;
-  font-family: 'Sen',sans-serif;
-  font-size: 24px;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  flex-shrink: 1;
-  min-width:125px;
-  
-}
 
 /*Postagem*/
 
 .main-nav{
   text-align: center;
-  flex-basis: 100%;
   border-bottom: #000000 solid 1px;
   padding: 15px;
   height: 50px;
@@ -434,24 +325,7 @@ li {
 }
 
 /*rodape*/
-.rodape{
-  display: flex;
-  flex-basis: 100%;
-  background-color: #2D2D29;
-}
 
-.rodape a{
-  font-family: 'sen',sans-serif;
-  color: white;
-  text-decoration: none;
-  padding: 5px;
-}
-
-body{
-  background-color: #9490C9;
-}
-
-/*Registro*/
 
 .registro-turma{
   display: flex;
