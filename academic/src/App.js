@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { AuthProvider } from "./contexts/AuthContext"
+import { Atividades } from './pages/Atividades'
+import { CriarAtv } from "./pages/CriarAtividades"
 import { Criar } from './pages/CriarTurma'
 import { Home } from './pages/Home'
 import { Pessoas } from "./pages/Pessoas"
@@ -18,6 +20,8 @@ function App() {
             <Route path='home' element ={<Home/>} />
             <Route path='home/criar' element ={<Criar/>} />
             <Route path='home/turma/:id' element ={<Turma/>} />
+            <Route path='home/turma/:id/atividades' element ={<Atividades/>} />
+            <Route path='home/turma/:id/atividades/criar' element ={<CriarAtv />} />
             <Route path='home/turma/:id/pessoas' element ={<Pessoas/>} />
           </Routes>
         </AuthProvider>
