@@ -16,7 +16,7 @@ export function CriarAtv(){
     const [date, setDate] = useState('');
     const [users, SetUser] = useState('');
 
-    const usercollectionRef = doc(db, 'users', user.id)
+    const turmaCollectionRef = doc(db, 'turma', id)
     const AtivCollectionRef = collection(db, 'atividades')
 
     const handleTituloChange = (e) => {
@@ -51,13 +51,13 @@ export function CriarAtv(){
           users: pessoas,
           usersEntrege: [],
           documento: [],
-          nota: undefined,
+          nota: null,
           data: new Date()
         })
     
-        await updateDoc(usercollectionRef, {
+        await updateDoc(turmaCollectionRef, {
             atividades: arrayUnion({
-                turmaId: newAtividade.id,
+                turmaId: id,
                 titulo: titulo,
                 descrição: descrição,
                 dataEntrege: date
@@ -70,9 +70,8 @@ export function CriarAtv(){
     return(
         <div className='criar-post'>
             <form onSubmit={ handleSubmit }>
-                <h1>Criar Post</h1>
-                <label>Titulo: </label>
-
+                <h1>Criar Atividade</h1>
+                <label>Titulo:</label>
                 <input 
                     type="text" value={titulo} required onChange={(e) => { handleTituloChange(e) }} 
                 />
@@ -85,7 +84,7 @@ export function CriarAtv(){
                 <input
                     type="date" value={date} required onChange={(e) => { handleDateChange(e) }} 
                 />
-                
+                <button className='registro-button-reg'>Criar</button>
             </form>
         </div>
     )

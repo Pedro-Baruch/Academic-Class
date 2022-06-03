@@ -27,7 +27,7 @@ export const Pessoas = () => {
                 <nav class="main-nav">
                     <a href="http://localhost:3000/home/post">Publicações</a>
                     <Link to={`/home/turma/${id}/pessoas`}>Pessoas</Link>
-                    <a href="http://localhost:3000/home/atividade">Atividades</a>
+                    <Link to={`/home/turma/${id}/atividades`}>Atividades</Link>
                 </nav>
                 <div className="pessoas">
                     <h2 className="pessoas-titulo">Professores</h2>
