@@ -24,6 +24,7 @@ export const Registro = () => {
         name: user.name,
         avatar: user.avatar,
         email: user.email,
+        turmas: []
       });
       
       navigate('home')
