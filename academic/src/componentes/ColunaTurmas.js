@@ -1,6 +1,6 @@
 import './ColunaTurmasStyle.css'
 
-export function ColunaTumas () {
+export function ColunaTurmas () {
     return (
         <>
             <aside class="coluna-turma">

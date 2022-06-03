@@ -1,7 +1,7 @@
 import { addDoc, arrayUnion, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ColunaTumas } from '../componentes/ColunaTurmas';
+import { ColunaTurmas } from '../componentes/ColunaTurmas';
 import { Navbar } from '../componentes/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
@@ -95,7 +95,7 @@ export const Criar = () => {
     <div class="container">
       <Navbar/>
       <div class="row">
-        <ColunaTumas/>
+        <ColunaTurmas/>
         <header className="registro-turma">
 
         <form onSubmit={ handleSubmit }>

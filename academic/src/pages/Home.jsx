@@ -2,7 +2,7 @@ import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CardTurmaItem } from '../componentes/CardTurmaItem';
-import { ColunaTumas } from '../componentes/ColunaTurmas';
+import { ColunaTurmas } from '../componentes/ColunaTurmas';
 import { Footer } from '../componentes/Footer';
 import { Navbar } from '../componentes/Navbar';
 import { useAuth } from '../contexts/AuthContext';
@@ -37,7 +37,7 @@ export const Home = () => {
     <div class="container">
       <Navbar/>
       <div class="row">
-        <ColunaTumas/>
+        <ColunaTurmas/>
         <main class="turma-card">
           <ul class="card">
             <li className="card-imagem"><a href="#"><img class="banner-imagem" src="https://st.depositphotos.com/1002326/5133/v/450/depositphotos_51331625-stock-illustration-open-book-with-summer-landscape.jpg" alt="" /></a></li>
