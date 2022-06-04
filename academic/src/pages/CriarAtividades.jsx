@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
+import { formataDate } from '../services/util';
 import './../pages/RegistroStyle.css';
 
 export function CriarAtv(){
@@ -46,7 +47,7 @@ export function CriarAtv(){
           admin: [{user: user.id, avatar: user.avatar, name: user.name}],
           nome: titulo,
           descrição: descrição,
-          dateEntega: date,
+          dateEntrega: formataDate(date),
           status: false,
           users: pessoas,
           usersEntrege: [],
@@ -60,12 +61,11 @@ export function CriarAtv(){
                 turmaId: id,
                 titulo: titulo,
                 descrição: descrição,
-                dataEntrege: date
+                dataEntrege: formataDate(date)
             })
         })
         navigate(-1)
     }
-
 
     return(
         <div className='criar-post'>
