@@ -45,7 +45,7 @@ export const Criar = () => {
       nome: nome,
       descrição: descrição,
       atividades: [],
-      post: [],
+      posts: [],
       users: [{user: user.id, avatar: user.avatar, name: user.name},],
       data: new Date()
 

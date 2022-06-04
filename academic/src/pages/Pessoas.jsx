@@ -25,7 +25,7 @@ export const Pessoas = () => {
             <Navbar/>
             <div className='pessoas-turma'>
                 <nav class="main-nav">
-                    <a href="http://localhost:3000/home/post">Publicações</a>
+                    <Link to={`/home/turma/${id}`}>Comunicados</Link>
                     <Link to={`/home/turma/${id}/pessoas`}>Pessoas</Link>
                     <Link to={`/home/turma/${id}/atividades`}>Atividades</Link>
                 </nav>

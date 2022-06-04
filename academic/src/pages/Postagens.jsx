@@ -1,31 +1,58 @@
+import { doc, onSnapshot } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Navbar } from '../componentes/Navbar';
+import { useAuth } from '../contexts/AuthContext';
+import { db } from '../services/firebase-config';
 import './../pages/RegistroStyle.css';
 
 export function Post(){
 
+    const {id } = useParams()
+    const {user} = useAuth()
+    const [post, setPost] = useState([])
+    const [turma, setTurma] = useState([])
+
+    useEffect(() => {
+        onSnapshot(doc(db, 'turma', `${id}` ), (doc) => {
+            setPost(doc.data()?.posts)
+            setTurma(doc.data())
+        })
+    }, [user?.id])
 
     return(
-        <div className='posts-turma'>
-            <nav className="main-nav">
-                <a href="http://localhost:3000/home/post">Publicações</a>
-                <a href="http://localhost:3000/home/pessoas">Pessoas</a>
-                <a href="http://localhost:3000/home/atividade">Atividades</a>
-            </nav>
-            <section class="info-turma">
-                <h2>Turma 01</h2>
-                <p>Descrição da turma</p>
-                <div className='botao-criar'>
-                    <a className='botao' href="http://localhost:3000/home/criarPost" >+</a>
-                </div>
-            </section>
-            <div className="posts">
-                <div className='post'>
-                    <img className='imagem-perfil-post' src=""></img>
-                    <h2 className="nome-user">NomeUser</h2>
-                    <p>dataPost</p>
-                    <div class="postagem">
-                        <p>Postagem</p>
+        <div className='container'>
+            <Navbar/>
+            <div className='atividades-turma'>
+                <nav className="main-nav">
+                    <Link to={`/home/turma/${id}`}>Comunicados</Link>
+                    <Link to={`/home/turma/${id}/pessoas`}>Pessoas</Link>
+                    <Link to={`/home/turma/${id}/atividades`}>Atividades</Link>
+                </nav>
+                <section class="info-turma">
+                    <h2>{turma.nome}</h2>
+                    <p>{turma.descrição}</p>
+                    <div className='botao-criar'>
+                        <Link className='botao' to={`/home/turma/${id}/criar`}>+</Link>
                     </div>
-                </div>    
+                </section>
+                <div className="posts">
+                    <div className='post'>
+                        {post.map((item, id) => {
+                            return(
+                                <div key={id}>
+                                    <img className='imagem-perfil-post' src={item.userAvatar} alt="Avatar"></img>
+                                    <h2 className="nome-user">{item.userName}</h2>
+                                    <p>dataPost</p>
+                                    <div class="postagem">
+                                        <p>{item.descrição}</p>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                        
+                    </div>    
+                </div>
             </div>
         </div>
     )
