@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
+import { formataDate } from '../services/util';
 import './../pages/RegistroStyle.css';
 
 export function CriarPost(){
@@ -32,7 +33,6 @@ export function CriarPost(){
           admin: [{user: user.id, avatar: user.avatar, name: user.name}],
           nome: titulo,
           descrição: descrição,
-          status: false,
           data: new Date()
         })
     
@@ -43,7 +43,7 @@ export function CriarPost(){
                 descrição: descrição,
                 userName : user.name,
                 userAvatar: user.avatar,
-                data: new Date()
+                data: formataDate(new Date())
             })
         })
         navigate(-1)

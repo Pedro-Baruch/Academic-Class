@@ -43,7 +43,7 @@ export function Post(){
                                 <div key={id}>
                                     <img className='imagem-perfil-post' src={item.userAvatar} alt="Avatar"></img>
                                     <h2 className="nome-user">{item.userName}</h2>
-                                    <p>dataPost</p>
+                                    <p>{item.data}</p>
                                     <div class="postagem">
                                         <p>{item.descrição}</p>
                                     </div>
