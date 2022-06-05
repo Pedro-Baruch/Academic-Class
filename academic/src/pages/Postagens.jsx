@@ -33,7 +33,7 @@ export function Post(){
                     <h2>{turma.nome}</h2>
                     <p>{turma.descrição}</p>
                     <div className='botao-criar'>
-                        <Link className='botao' to={`/home/turma/${id}/criar`}>+</Link>
+                      <Link className='botao' to={`/home/turma/${id}/criar`}>+</Link>
                     </div>
                 </section>
                 <div className="posts">
@@ -45,12 +45,11 @@ export function Post(){
                                     <h2 className="nome-user">{item.userName}</h2>
                                     <p>{item.data}</p>
                                     <div class="postagem">
-                                        <p>{item.descrição}</p>
+                                        <p className='texto-postagem'>{item.descrição}</p>
                                     </div>
                                 </div>
                             )
-                        })}
-                        
+                        })}  
                     </div>    
                 </div>
             </div>

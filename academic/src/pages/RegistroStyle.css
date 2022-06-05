@@ -2,6 +2,9 @@ li {
   list-style-type: none;
 }
 
+*{
+  font-family: 'Sen',sans-serif;
+}
 
 /*deficção container*/
 
@@ -185,54 +188,21 @@ li {
 .postagem{
   clear: left;
   background-color: #D1D8E4;
-  height: 400px;
+  height: 100px;
   width: 100%;
-  text-align: center;
   border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.texto-postagem{
+  text-align: left;
+  padding: 10px;
+  font-family: 'sen',sans-serif;
 }
 
 /* comentario da postagem */
 
-.imagem-perfil-coment{
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-}
-
-.subt-coment{
-  clear: left;
-  font-family: 'sen',sans-serif;
-  margin: 10px 0;
-  font-size: 20px;
-}
-
-.comentario{
-  margin-bottom: 2%;
-  height: 40px;
-  width: 88%;
-  margin: 2%;
-  border-radius: 10px;
-}
-
 /* pagina criar postagem*/
-
-.criar-post{
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  background-color: #e7eaf1;
-  min-height: 100vh;
-}
-
-
-.tipo-button{
-  padding-left:10px;   
-  padding-right:10px;   
-  background-color:rgb(172, 167, 167);
-  border-radius:2px;
-  font-family: 'sen',sans-serif;
-  font-size: medium;
-}
 
 /* pagina pessoas */
 
