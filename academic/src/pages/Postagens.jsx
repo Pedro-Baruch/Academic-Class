@@ -21,38 +21,38 @@ export function Post(){
     }, [user?.id])
 
     return(
-        <div className='container'>
-            <Navbar/>
-            <div className='atividades-turma'>
-                <nav className="main-nav">
-                    <Link to={`/home/turma/${id}`}>Comunicados</Link>
-                    <Link to={`/home/turma/${id}/pessoas`}>Pessoas</Link>
-                    <Link to={`/home/turma/${id}/atividades`}>Atividades</Link>
-                </nav>
-                <section class="info-turma">
-                    <h2>{turma.nome}</h2>
-                    <p>{turma.descrição}</p>
-                    <div className='botao-criar'>
-                      <Link className='botao' to={`/home/turma/${id}/criar`}>+</Link>
-                    </div>
-                </section>
-                <div className="posts">
-                    <div className='post'>
-                        {post.map((item, id) => {
-                            return(
-                                <div key={id}>
-                                    <img className='imagem-perfil-post' src={item.userAvatar} alt="Avatar"></img>
-                                    <h2 className="nome-user">{item.userName}</h2>
-                                    <p>{item.data}</p>
-                                    <div class="postagem">
-                                        <p className='texto-postagem'>{item.descrição}</p>
-                                    </div>
-                                </div>
-                            )
-                        })}  
-                    </div>    
-                </div>
+      <div className='container'>
+      <Navbar/>
+      <div className='atividades-turma'>
+          <nav className="main-nav">
+              <Link to={`/home/turma/${id}`}>Comunicados</Link>
+              <Link to={`/home/turma/${id}/pessoas`}>Pessoas</Link>
+              <Link to={`/home/turma/${id}/atividades`}>Atividades</Link>
+          </nav>
+          <section class="info-turma">
+              <h2>{turma.nome}</h2>
+              <p>{turma.descrição}</p>
+              <div className='botao-criar'>
+                <Link className='botao' to={`/home/turma/${id}/criar`}>+</Link>
+              </div>
+          </section>
+          <div className="posts">
+              <div className='post'>
+                  {post.map((item, id) => {
+                      return(
+                          <div key={id}>
+                              <img className='imagem-perfil-post' src={item.userAvatar} alt="Avatar"></img>
+                              <h2 className="nome-user">{item.userName}</h2>
+                              <p>{item.data}</p>
+                              <div class="postagem">
+                                  <p className='texto-postagem'>{item.descrição}</p>
+                              </div>
+                          </div>
+                      )
+                  })}  
+                </div>    
             </div>
         </div>
+    </div>
     )
 }

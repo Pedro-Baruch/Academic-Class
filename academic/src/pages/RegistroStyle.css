@@ -87,6 +87,7 @@ li {
   width: 300px;
   height: 80px;
   border-radius: 10px 10px 0px 0px;
+  background-color: #2541D0;
 }
 
 #cod{
@@ -121,10 +122,6 @@ li {
   background-color: #D1D8E4;
 }
 
-/*config da pagina de registro*/
-
-
-
 /*Postagem*/
 
 .main-nav{
@@ -142,7 +139,7 @@ li {
 }
 
 .info-turma{
-  height: 96px;
+  height: 120px;
   display: block;
   margin: 2% 20%;
   border-radius: 10px;
@@ -153,6 +150,12 @@ li {
 
 .info-turma h2{
   font-size: 20px;
+}
+
+@media (max-width: 650px){
+  .main-nav{
+    margin-top: 80px;
+  }
 }
 
 .posts-turma{
@@ -283,15 +286,23 @@ li {
 
 .botao-criar{
   display: flex;
-  border-radius: 7px;
+  flex-basis: 100%;
+  flex-direction: row-reverse;
+  
+  margin-bottom: 10px;
 }
 
 .botao{
-  display: flex;
-  padding-left: 20px;
+  padding: 10px 20px 10px 20px;
+
+  margin: 5px 10px 10px 20px;
+  
+  border-radius: 10px;
+  font-size: 20px;
+
   text-decoration: none;
-  color: #000000;
-  font-size: 25px;
+  color: white;
+  background-color: #5D80DB;
 }
 
 /*rodape*/
