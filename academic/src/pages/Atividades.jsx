@@ -1,6 +1,7 @@
 import { doc, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { ColunaTurmas } from '../componentes/ColunaTurmas';
 import { Navbar } from '../componentes/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
@@ -24,7 +25,9 @@ export function Atividades(){
     return(
         <div className='container'> 
             <Navbar/>
-            <div className='atividades-turma'>
+            <div className='row'>
+              <ColunaTurmas/>
+              <div className='atividades-turma'>
                 <nav class="main-nav">
                     <Link to={`/home/turma/${id}`}>Comunicados</Link>
                     <Link to={`/home/turma/${id}/pessoas`}>Pessoas</Link>
@@ -46,6 +49,7 @@ export function Atividades(){
                     })}
                     
                 </div>
+              </div>
             </div>
         </div>
     )
