@@ -21,9 +21,6 @@ export function Atividades(){
         })
     }, [user?.id])
 
-    
-
-
     return(
         <div className='container'> 
             <Navbar/>
@@ -34,18 +31,20 @@ export function Atividades(){
                     <Link to={`/home/turma/${id}/atividades`}>Atividades</Link>
                 </nav>
                 <div className='botao-criar'>
-                    <Link className='botao' to={`/home/turma/${id}/atividades/criar`}>+</Link>
+                    <Link className='botao-atividades' id='criar-atividade' to={`/home/turma/${id}/atividades/criar`}>+</Link>
                 </div>
                 <div className='atividades'>
-                    <h2 className='atividades-titulo'>Atividades</h2>
                     {atividades.map((item, id) => {
                         return(
                             <ul className='atividades-objeto' key={id} >
-                                <li>{item.titulo}</li>
-                                <li>Data de entrega: {item.dataEntrege}</li>
+                              <li className='atividades-titulo'>{item.titulo}</li>
+                              <li className='atividades-data'>Data de entrega: {item.dataEntrege}</li>
+                              <li className='atividades-desc'>Descrição: {item.descrição}</li>
+                              <button className='atividades-responder'>Responder</button>
                             </ul>
                         )
                     })}
+                    
                 </div>
             </div>
         </div>

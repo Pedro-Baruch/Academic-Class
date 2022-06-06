@@ -207,6 +207,8 @@ li {
 
 .duvida-container{
   display: flex;
+  flex-basis: auto;
+
 }
 
 .duvida{
@@ -217,6 +219,7 @@ li {
   margin-top: -20px;
   margin-bottom: 10px;
 }
+
 /* pagina criar postagem*/
 
 /* pagina pessoas */
@@ -279,26 +282,49 @@ li {
   margin-right: 15%;
 }
 
-.atividades-titulo{
-  border-bottom: solid 1px black;
-  margin-top: 20px;
-}
 
 .atividades-objeto{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: 120%;
   justify-content:space-between;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 05px;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  
+  border: solid 1px black;
+  border-radius: 10px;
+  
+  background-color: #97B3E9;
+}
+
+.atividades-titulo{
+  border-bottom: solid 1px black;
+  margin-top: 20px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.atividades-data, .atividades-desc{
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.atividades-responder{
+  padding: 10px;
+  max-width: 100px;
+  background-color: #5D80DB;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: white;
 }
 
 /* Botão criar */
 
 .botao-criar{
   display: flex;
-  flex-basis: 100%;
   flex-direction: row-reverse;
   
   margin-bottom: 10px;
@@ -311,6 +337,21 @@ li {
   
   border-radius: 10px;
   font-size: 20px;
+
+  text-decoration: none;
+  color: white;
+  background-color: #5D80DB;
+}
+
+.botao-atividades{
+  padding: 10px 20px 10px 20px;
+
+  margin: 20px 10px -70px 20px;
+  
+  border-radius: 10px;
+  font-size: 20px;
+
+  
 
   text-decoration: none;
   color: white;
