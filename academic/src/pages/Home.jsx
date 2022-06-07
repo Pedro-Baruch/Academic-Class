@@ -40,7 +40,7 @@ export const Home = () => {
         <ColunaTurmas/>
         <main class="turma-card">
           <ul class="card">
-            <li className="card-imagem"><a href="#"><img class="banner-imagem" src="https://st.depositphotos.com/1002326/5133/v/450/depositphotos_51331625-stock-illustration-open-book-with-summer-landscape.jpg" alt="" /></a></li>
+            <li className="banner-imagem"></li>
             <li className="card-item">
               <button onClick={() => navigate('criar')}>Criar turma</button>
             </li>
