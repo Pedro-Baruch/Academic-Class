@@ -19,11 +19,11 @@ export const Registro = () => {
     if(!user){
       await signup()
     }else {
-      await setDoc(doc(db, "users", user.id), {
-        id: user.id,
-        name: user.name,
-        avatar: user.avatar,
-        email: user.email,
+      await setDoc(doc(db, "users", user?.id), {
+        id: user?.id,
+        name: user?.name,
+        avatar: user?.avatar,
+        email: user?.email,
         turmas: [],
         atividades: [],
         post: [],
