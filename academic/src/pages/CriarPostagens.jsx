@@ -4,6 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
 import { formataDate } from '../services/util';
+import { ColunaTurmas } from '../componentes/ColunaTurmas';
+import { Footer } from '../componentes/Footer';
+import { Navbar } from '../componentes/Navbar';
+
+import './../pages/Criar.css';
 import './../pages/RegistroStyle.css';
 
 export function CriarPost(){
@@ -50,20 +55,28 @@ export function CriarPost(){
     }
 
     return(
-        <div className='criar-post'>
-            <form onSubmit={ handleSubmit }>
-                <h1>Criar Post</h1>
-                <label>Titulo: </label>
-                <input
-                    type="text" value={titulo} required onChange={(e) => { handleTituloChange(e) }}
-                />
-                <label>descrição: </label>
-                <input
-                    type="text" value={descrição} required onChange={(e) => { handleDescricaoChange(e) }} 
-                />
-
-                <button className='registro-button-reg'>Criar</button>
+    <div class="container">
+        <Navbar/>
+        <div class="row">
+          <ColunaTurmas/>
+          <div className='criar-container'>
+            <form className='criar-post' onSubmit={ handleSubmit }>
+              <h1 className='criar-titulo'>Criar Post</h1>
+              <label className='criar-item'>Titulo</label>
+              <input 
+                  className='criar-campo'
+                  type="text" value={titulo} required onChange={(e) => { handleTituloChange(e) }}
+              />
+              <label className='criar-item'>Descrição</label>
+              <input 
+                  className='criar-campo'
+                  type="text" value={descrição} required onChange={(e) => { handleDescricaoChange(e) }} 
+              />
+              <button className='criar-button'>Criar</button>
             </form>
+          </div>
         </div>
+        <Footer/>
+      </div>
     )
 }
