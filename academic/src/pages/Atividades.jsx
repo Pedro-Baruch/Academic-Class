@@ -1,6 +1,7 @@
 import { doc, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { ColunaTurmas } from '../componentes/ColunaTurmas';
 import { Navbar } from '../componentes/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
@@ -21,32 +22,34 @@ export function Atividades(){
         })
     }, [user?.id])
 
-    
-
-
     return(
         <div className='container'> 
             <Navbar/>
-            <div className='atividades-turma'>
+            <div className='row'>
+              <ColunaTurmas/>
+              <div className='atividades-turma'>
                 <nav class="main-nav">
                     <Link to={`/home/turma/${id}`}>Comunicados</Link>
                     <Link to={`/home/turma/${id}/pessoas`}>Pessoas</Link>
                     <Link to={`/home/turma/${id}/atividades`}>Atividades</Link>
                 </nav>
                 <div className='botao-criar'>
-                    <Link className='botao' to={`/home/turma/${id}/atividades/criar`}>+</Link>
+                    <Link className='botao-atividades' id='criar-atividade' to={`/home/turma/${id}/atividades/criar`}>+</Link>
                 </div>
                 <div className='atividades'>
-                    <h2 className='atividades-titulo'>Atividades</h2>
                     {atividades.map((item, id) => {
                         return(
                             <ul className='atividades-objeto' key={id} >
-                                <li>{item.titulo}</li>
-                                <li>Data de entrega: {item.dataEntrege}</li>
+                              <li className='atividades-titulo'>{item.titulo}</li>
+                              <li className='atividades-data'>Data de entrega: {item.dataEntrege}</li>
+                              <li className='atividades-desc'>Descrição: {item.descrição}</li>
+                              <button className='atividades-responder'>Responder</button>
                             </ul>
                         )
                     })}
+                    
                 </div>
+              </div>
             </div>
         </div>
     )

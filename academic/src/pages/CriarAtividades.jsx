@@ -4,6 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
 import { formataDate } from '../services/util';
+import { ColunaTurmas } from '../componentes/ColunaTurmas';
+import { Footer } from '../componentes/Footer';
+import { Navbar } from '../componentes/Navbar';
+
+import './../pages/Criar.css';
 import './../pages/RegistroStyle.css';
 
 export function CriarAtv(){
@@ -68,24 +73,33 @@ export function CriarAtv(){
     }
 
     return(
-        <div className='criar-post'>
-            <form onSubmit={ handleSubmit }>
-                <h1>Criar Atividade</h1>
-                <label>Titulo:</label>
-                <input 
+    <div class="container">
+      <Navbar/>
+      <div class="row">
+        <ColunaTurmas/>
+        <div className='criar-container'>
+            <form className='criar-atividade' onSubmit={ handleSubmit }>
+                <h1 className='criar-titulo'>Criar Atividade</h1>
+                <label className='criar-item'>Titulo</label>
+                <input
+                    className='criar-campo'
                     type="text" value={titulo} required onChange={(e) => { handleTituloChange(e) }} 
                 />
-                <label>Descrição: </label>
+                <label className='criar-item'>Descrição</label>
                 <input
+                    className='criar-campo'
                     type="text" value={descrição} required onChange={(e) => { handleDescricaoChange(e) }} 
                 />
-
-                <label>Data de entrega: </label>
+                <label className='criar-item'>Data de entrega</label>
                 <input
+                    className='criar-campo'
                     type="date" value={date} required onChange={(e) => { handleDateChange(e) }} 
                 />
-                <button className='registro-button-reg'>Criar</button>
+                <button className='criar-button'>Criar</button>
             </form>
         </div>
+      </div>
+      <Footer/>
+    </div>
     )
 }
