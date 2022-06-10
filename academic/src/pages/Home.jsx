@@ -1,4 +1,4 @@
-import { arrayUnion, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { arrayUnion, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CardTurmaItem } from '../componentes/CardTurmaItem';
@@ -15,9 +15,6 @@ export const Home = () => {
   const [turmas, setTurmas] = useState([]);
   const [codTurma, setCodTurma] = useState([]);
   const navigate = useNavigate()
-  const [pessoas, setPessoas] = useState([]);
-  const [admin, setAdmin] = useState([]);
-
 
   const usersCollectionRef = collection(db, "turma");
 
@@ -67,9 +64,7 @@ export const Home = () => {
         users.push(doc.id)
       }
     });
-    return users
-    
-
+    return users 
   }
 
   function confirmarTurma() {
@@ -93,17 +88,18 @@ export const Home = () => {
       alert("Turma não encontrada!")
     }else {
       const userConf = await procurarPessoa()
+      const tur = procurarTurma(codTurma)
       if(userConf.length > 0){
         alert("Você já faz parte da turma!")
-      }else {
-        await updateDoc(usersCollectionRef, {
+      }else {  
+        await updateDoc(doc(db, "turma", tur), {
           users: arrayUnion({
-            user: user?.id,
-            avatar: user?.avatar,
-            name: user?.name,
+            user: user.id,
+            name: user.name,
+            avatar: user.avatar
           })
         })
-        navigate(`turma/${t.id}`)
+        navigate(`turma/${tur}`)
       }
     }
     
@@ -122,7 +118,7 @@ export const Home = () => {
             </li>
             <form onSubmit={ handleSubmit }>
               <input type="text" value={codTurma} required onChange={(e) => { handleChange(e) }} />
-              <button /*onClick={procura(codTurma)}*/ >Entrar</button>
+              <button>Entrar</button>
             </form>
           </ul>
             {turmas.map((turma) => {

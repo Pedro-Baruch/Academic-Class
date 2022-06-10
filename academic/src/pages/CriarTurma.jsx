@@ -5,9 +5,9 @@ import { ColunaTurmas } from '../componentes/ColunaTurmas';
 import { Navbar } from '../componentes/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
-
 import './../pages/Criar.css';
 import './../pages/RegistroStyle.css';
+
 
 export const Criar = () => {
   const navigate = useNavigate()
@@ -48,9 +48,8 @@ export const Criar = () => {
       descrição: descrição,
       atividades: [],
       posts: [],
-      users: [{user: user.id, avatar: user.avatar, name: user.name},],
+      users: [],
       data: new Date()
-
     })
 
     await updateDoc(usercollectionRef, {
