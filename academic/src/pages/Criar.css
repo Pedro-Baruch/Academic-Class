@@ -64,8 +64,28 @@
     color: white;
 }
 
+.criar-button-link{
+  width: 150px;
+  background-color: #6C69DC;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+
+  margin: 5% 40% 5% 40%;
+
+  font-family: sans-serif;
+
+  color: white;
+
+  text-decoration: none;
+}
+
 @media (max-width: 600px) {
   .criar-button{
+    margin: 10% 20% 10px 20%;
+  }
+
+  .criar-button-link{
     margin: 10% 20% 10px 20%;
   }
 

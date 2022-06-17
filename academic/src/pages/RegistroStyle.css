@@ -169,9 +169,13 @@ li {
   padding: 5px;
 }
 
+.posts-ts{
+  padding: 0px 5px 5px 5px;
+}
+
 .post{
   display: block;
-  margin: 5% 20%;
+  margin: 2% 20%;
 }
 
 .imagem-perfil-post{
@@ -203,17 +207,18 @@ li {
   font-family: 'sen',sans-serif;
 }
 
-/* comentario da postagem */
+/* duvida da postagem */
 
 .duvida-container{
   display: flex;
   flex-basis: auto;
-
 }
 
 .duvida{
   background-color: #D1D8E4;
   padding: 10px;
+  text-decoration: none;
+  color: black;
 
   border-radius: 10px;
   margin-top: -20px;
@@ -396,3 +401,4 @@ li {
   width:300px;
   height:100px;
 }
+

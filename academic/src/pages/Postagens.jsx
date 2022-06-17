@@ -51,7 +51,7 @@ export function Post(){
                                   <p className='texto-postagem'>{item.descrição}</p>
                                 </div>
                                 <div className='duvida-container'>
-                                  <button className='duvida'>Duvidas?</button>
+                                  <Link className='duvida' to={`/home/turma/${id}/duvidas`}>Duvidas?</Link>
                                 </div>
                               </div>
                         )
