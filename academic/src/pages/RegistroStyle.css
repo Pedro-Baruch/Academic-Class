@@ -171,6 +171,8 @@ li {
 
 .posts-ts{
   padding: 0px 5px 5px 5px;
+  border-top: #000000 solid 1px;
+  
 }
 
 .post{
@@ -180,8 +182,8 @@ li {
 
 .imagem-perfil-post{
   border-radius: 50%;
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   margin: 0 10px 10px 0;
   float: left;
 }
@@ -222,7 +224,7 @@ li {
 
   border-radius: 10px;
   margin-top: -20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /* pagina criar postagem*/

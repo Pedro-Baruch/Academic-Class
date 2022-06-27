@@ -41,21 +41,21 @@ export function Post(){
               </section>
               <div className="posts">
                 <div className='post'>
-                    {post.map((item, id) => {
-                        return(
-                              <div key={id}>
-                                <img className='imagem-perfil-post' src={item.userAvatar} alt="Avatar"></img>
-                                <h2 className="nome-user">{item.userName}</h2>
-                                <p>{item.data}</p>
-                                <div className="postagem">
-                                  <p className='texto-postagem'>{item.descrição}</p>
-                                </div>
-                                <div className='duvida-container'>
-                                  <Link className='duvida' to={`/home/turma/${id}/duvidas`}>Duvidas?</Link>
-                                </div>
-                              </div>
-                        )
-                    })}  
+                  {post.map((item, id) => {
+                      return(
+                        <div key={id}>
+                          <img className='imagem-perfil-post' src={item.userAvatar} alt="Avatar"></img>
+                          <h2 className="nome-user">{item.userName}</h2>
+                          <p>{item.data}</p>
+                          <div className="postagem">
+                            <p className='texto-postagem'>{item.descrição}</p>
+                          </div>
+                          <div className='duvida-container'>
+                            <Link className='duvida' to={`${item.postId}/duvidas`}>Duvidas?</Link>
+                          </div>
+                        </div>
+                      )
+                  })}  
                 </div>    
               </div>
             </div>

@@ -1,12 +1,12 @@
 import { addDoc, arrayUnion, collection, doc, updateDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { db } from '../services/firebase-config';
-import { formataDate } from '../services/util';
 import { ColunaTurmas } from '../componentes/ColunaTurmas';
 import { Footer } from '../componentes/Footer';
 import { Navbar } from '../componentes/Navbar';
+import { useAuth } from '../contexts/AuthContext';
+import { db } from '../services/firebase-config';
+import { formataDate } from '../services/util';
 
 import './../pages/Criar.css';
 import './../pages/RegistroStyle.css';
@@ -33,16 +33,17 @@ export function CriarPost(){
     async function handleSubmit(e) {
         e.preventDefault();
         
-        await addDoc(postsCollectionRef, {
+        const newPost = await addDoc(postsCollectionRef,{
           turmaid: id,
           admin: [{user: user.id, avatar: user.avatar, name: user.name}],
           nome: titulo,
           descrição: descrição,
-          data: new Date()
+          data: formataDate(new Date())
         })
     
         await updateDoc(turmaCollectionRef, {
             posts: arrayUnion({
+                postId: newPost.id,
                 turmaId: id,
                 titulo: titulo,
                 descrição: descrição,

@@ -1,13 +1,41 @@
-import './../pages/RegistroStyle.css';
-import './../pages/Criar.css';
+import { collection, doc, getDocs, onSnapshot, query, where } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { ColunaTurmas } from '../componentes/ColunaTurmas';
 import { Footer } from '../componentes/Footer';
 import { Navbar } from '../componentes/Navbar';
-import { ColunaTurmas } from '../componentes/ColunaTurmas';
-import { Link, useParams } from 'react-router-dom';
+import { db } from '../services/firebase-config';
+import './../pages/Criar.css';
+import './../pages/RegistroStyle.css';
 
 export function Duvida(){
+  const {id} = useParams()
+  const {idD} = useParams()
+  const [duvida, setDuvida] = useState([]);
+  const [post, setPost] = useState('')
 
-  const {id } = useParams()
+  const collectionDuvida = collection(db, "duvida")
+  
+  useEffect( () => {
+    onSnapshot(doc(db, 'posts', `${idD}` ), (doc) => {
+      setPost(doc.data())
+    })
+    procurarDuvidas()
+  }, []);
+
+  async function procurarDuvidas() {
+    const duvid = []
+    const q = query(collectionDuvida, where ("postId", '==', idD))
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      duvid.push(doc.data())
+    });
+    setDuvida(duvid)
+    
+    return duvid
+  }
+
 
   return(
     <div className="container">
@@ -22,24 +50,27 @@ export function Duvida(){
           </nav>
           <div className="posts">
             <div className='post'>
-              {/* Post que pertence a duvida */}
-              <img className='imagem-perfil-post'></img>
-              <h2 className="nome-user">Pedro</h2>
-              <p>22/22/22</p>
               <div className="postagem">
-                <p className='texto-postagem'>descrição</p>
+                <p className='texto-postagem'>{post.descrição}</p>
               </div>
-              <Link class='duvida' to={`/home/turma/${id}/duvidas/criar`}>Criar duvida</Link>
+              <Link class='duvida' to={`criar`}>Criar duvida</Link>
             </div>    
           </div>
           <div className="posts-ts">
             <div className='post'>
-              <img className='imagem-perfil-post'></img>
-              <h2 className="nome-user">Pedro</h2>
-              <p>22/22/22</p>
-              <div className="postagem">
-                <p className='texto-postagem'>descrição</p>
-              </div>
+              {duvida.map((item, id) => {
+                return(
+                  <div key={id}>
+                    <img className='imagem-perfil-post' src={item.currentUser[0].avatar} alt="Avatar"></img>
+                    <h2 className="nome-user">{item.currentUser[0].name}</h2>
+                    <p>{item.data}</p>
+                    <div className="postagem">
+                      <p className='texto-postagem'>{item.duvida}</p>
+                    </div>
+                  </div>
+                )
+              })}
+              
             </div>
           </div>       
         </div>
