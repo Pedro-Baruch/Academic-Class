@@ -28,13 +28,8 @@ export const Registro = () => {
         atividades: [],
         post: [],
       });
-      
       navigate('home')
-
     }
-
-
-
   }
 
   return (

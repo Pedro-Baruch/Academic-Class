@@ -36,8 +36,6 @@ export const Home = () => {
       return 
     })
     return turmaEncontrada[0]
-    
-
   }
 
   async function procurarPessoa() {
@@ -102,7 +100,6 @@ export const Home = () => {
         navigate(`turma/${tur}`)
       }
     }
-    
   }
 
   return (
