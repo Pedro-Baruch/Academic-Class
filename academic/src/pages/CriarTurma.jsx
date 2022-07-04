@@ -5,7 +5,9 @@ import { ColunaTurmas } from '../componentes/ColunaTurmas';
 import { Navbar } from '../componentes/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
+import './../pages/Criar.css';
 import './../pages/RegistroStyle.css';
+
 
 export const Criar = () => {
   const navigate = useNavigate()
@@ -45,10 +47,9 @@ export const Criar = () => {
       nome: nome,
       descrição: descrição,
       atividades: [],
-      post: [],
-      users: [{user: user.id, avatar: user.avatar, name: user.name},],
+      posts: [],
+      users: [],
       data: new Date()
-
     })
 
     await updateDoc(usercollectionRef, {
@@ -74,28 +75,20 @@ export const Criar = () => {
       <Navbar/>
       <div class="row">
         <ColunaTurmas/>
-        <header className="registro-turma">
-
-        <form onSubmit={ handleSubmit }>
-          { }
-          <h1 className='registro-titulo'>Criar Turma </h1>
-
-          <label className='registro-texto'>º
-            Name:
-          </label><br />
-          <input className='registro-campo' type="text" value={nome}
-            required onChange={(e) => { handleChange(e) }} /><br />
-
-          <label className='registro-texto'>
-            descrição:
-          </label><br />
-          <input className='campo-reg' type="descrição" value={descrição}
-            required onChange={(e) => { handleDescriçãoChange(e) }} /><br />
-
-          <button className='registro-button-reg'>Criar</button>
-
-        </form>
-            </header>
+        <div className='criar-container'>
+          <form className='criar-post' onSubmit={ handleSubmit }>
+            <h1 className='criar-titulo'>Criar Turma</h1>
+            <label className='criar-item'>Name</label>
+            <input 
+              className='criar-campo'
+              type="text" value={nome} required onChange={(e) => { handleChange(e) }}/>
+            <label className='criar-item'>Descrição</label>
+            <input
+              className='criar-campo' 
+              type="descrição" value={descrição} required onChange={(e) => { handleDescriçãoChange(e) }} /><br />
+            <button className='criar-button'>Criar</button>
+          </form>
+        </div>
       </div>
     </div>
   )

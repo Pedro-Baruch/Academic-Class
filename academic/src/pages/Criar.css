@@ -1,0 +1,95 @@
+.criar-container{
+  display: flex;
+  flex-basis: 100%;
+
+  background-color: #e7eaf1;
+  height: 100%;
+  min-height: 100vh;
+
+  font-family: sans-serif;
+  color: white;
+}
+
+.criar-post{
+    display: flex;
+    flex-basis: 60%;
+    flex-direction: column;
+    
+    background-color: #2c2c2c;
+
+    margin: 10% 20% 10% 20%;
+    border-radius: 10px;
+
+    height: 400px;
+}
+
+.criar-atividade{
+    display: flex;
+    flex-basis: 60%;
+    flex-direction: column;
+    
+    background-color: #2c2c2c;
+
+    margin: 10% 20% 10% 20%;
+    border-radius: 10px;
+
+    height: 500px;
+}
+
+.criar-titulo{
+    text-align: center;
+    padding: 30px 10px 10px 10px;
+}
+
+.criar-item{
+    padding: 5px 30px 10px 30px;
+}
+
+.criar-campo{
+    margin: 5px 30px 10px 30px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.criar-button{
+    max-width: 150px;
+    background-color: #6C69DC;
+    padding: 20px;
+    border-radius: 10px;
+
+    margin: 5% 40% 5% 40%;
+
+    font-family: sans-serif;
+
+    color: white;
+}
+
+.criar-button-link{
+  width: 150px;
+  background-color: #6C69DC;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+
+  margin: 5% 40% 5% 40%;
+
+  font-family: sans-serif;
+
+  color: white;
+
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .criar-button{
+    margin: 10% 20% 10px 20%;
+  }
+
+  .criar-button-link{
+    margin: 10% 20% 10px 20%;
+  }
+
+  .criar-container{
+    height: 100vh;
+  }
+}

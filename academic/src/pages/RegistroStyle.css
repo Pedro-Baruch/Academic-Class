@@ -2,6 +2,9 @@ li {
   list-style-type: none;
 }
 
+*{
+  font-family: 'Sen',sans-serif;
+}
 
 /*deficção container*/
 
@@ -84,6 +87,7 @@ li {
   width: 300px;
   height: 80px;
   border-radius: 10px 10px 0px 0px;
+  background-color: #2541D0;
 }
 
 #cod{
@@ -118,10 +122,6 @@ li {
   background-color: #D1D8E4;
 }
 
-/*config da pagina de registro*/
-
-
-
 /*Postagem*/
 
 .main-nav{
@@ -139,17 +139,23 @@ li {
 }
 
 .info-turma{
-  height: 96px;
+  height: 120px;
   display: block;
   margin: 2% 20%;
   border-radius: 10px;
-  background-color: #D1D8E4;
+  background-color: #97B3E9;
   font-family: 'sen',sans-serif;
   padding: 15px;
 }
 
 .info-turma h2{
   font-size: 20px;
+}
+
+@media (max-width: 650px){
+  .main-nav{
+    margin-top: 80px;
+  }
 }
 
 .posts-turma{
@@ -163,15 +169,19 @@ li {
   padding: 5px;
 }
 
+.posts-ts{
+  padding: 0px 5px 5px 5px;
+}
+
 .post{
   display: block;
-  margin: 5% 20%;
+  margin: 2% 20%;
 }
 
 .imagem-perfil-post{
   border-radius: 50%;
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   margin: 0 10px 10px 0;
   float: left;
 }
@@ -185,54 +195,37 @@ li {
 .postagem{
   clear: left;
   background-color: #D1D8E4;
-  height: 400px;
+  height: 100px;
   width: 100%;
-  text-align: center;
   border-radius: 10px;
+  margin-bottom: 40px;
 }
 
-/* comentario da postagem */
-
-.imagem-perfil-coment{
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-}
-
-.subt-coment{
-  clear: left;
+.texto-postagem{
+  text-align: left;
+  padding: 10px;
   font-family: 'sen',sans-serif;
-  margin: 10px 0;
-  font-size: 20px;
 }
 
-.comentario{
-  margin-bottom: 2%;
-  height: 40px;
-  width: 88%;
-  margin: 2%;
+/* duvida da postagem */
+
+.duvida-container{
+  display: flex;
+  flex-basis: auto;
+}
+
+.duvida{
+  background-color: #D1D8E4;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+
   border-radius: 10px;
+  margin-top: -20px;
+  margin-bottom: 20px;
 }
 
 /* pagina criar postagem*/
-
-.criar-post{
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  background-color: #e7eaf1;
-  min-height: 100vh;
-}
-
-
-.tipo-button{
-  padding-left:10px;   
-  padding-right:10px;   
-  background-color:rgb(172, 167, 167);
-  border-radius:2px;
-  font-family: 'sen',sans-serif;
-  font-size: medium;
-}
 
 /* pagina pessoas */
 
@@ -294,38 +287,83 @@ li {
   margin-right: 15%;
 }
 
-.atividades-titulo{
-  border-bottom: solid 1px black;
-  margin-top: 20px;
-}
 
 .atividades-objeto{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: 120%;
   justify-content:space-between;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 05px;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  
+  border: solid 1px black;
+  border-radius: 10px;
+  
+  background-color: #97B3E9;
+}
+
+.atividades-titulo{
+  border-bottom: solid 1px black;
+  margin-top: 20px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.atividades-data, .atividades-desc{
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.atividades-responder{
+  padding: 10px;
+  max-width: 100px;
+  background-color: #5D80DB;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: white;
 }
 
 /* Botão criar */
 
 .botao-criar{
   display: flex;
-  border-radius: 7px;
+  flex-direction: row-reverse;
+  
+  margin-bottom: 10px;
 }
 
 .botao{
-  display: flex;
-  padding-left: 20px;
+  padding: 10px 20px 10px 20px;
+
+  margin: 5px 10px 10px 20px;
+  
+  border-radius: 10px;
+  font-size: 20px;
+
   text-decoration: none;
-  color: #000000;
-  font-size: 25px;
+  color: white;
+  background-color: #5D80DB;
+}
+
+.botao-atividades{
+  padding: 10px 20px 10px 20px;
+
+  margin: 20px 10px -70px 20px;
+  
+  border-radius: 10px;
+  font-size: 20px;
+
+  
+
+  text-decoration: none;
+  color: white;
+  background-color: #5D80DB;
 }
 
 /*rodape*/
-
 
 .registro-turma{
   display: flex;
@@ -338,7 +376,6 @@ li {
   font-size: calc(10px + 2vmin);
 }
 
- 
 .registro-button-reg{
   padding: 12px 30px;
   width: 40%;
@@ -364,3 +401,4 @@ li {
   width:300px;
   height:100px;
 }
+

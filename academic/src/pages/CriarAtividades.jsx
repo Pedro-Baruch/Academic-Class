@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../services/firebase-config';
+import { formataDate } from '../services/util';
+import { ColunaTurmas } from '../componentes/ColunaTurmas';
+import { Footer } from '../componentes/Footer';
+import { Navbar } from '../componentes/Navbar';
+
+import './../pages/Criar.css';
 import './../pages/RegistroStyle.css';
 
 export function CriarAtv(){
@@ -16,7 +22,7 @@ export function CriarAtv(){
     const [date, setDate] = useState('');
     const [users, SetUser] = useState('');
 
-    const usercollectionRef = doc(db, 'users', user.id)
+    const turmaCollectionRef = doc(db, 'turma', id)
     const AtivCollectionRef = collection(db, 'atividades')
 
     const handleTituloChange = (e) => {
@@ -46,47 +52,54 @@ export function CriarAtv(){
           admin: [{user: user.id, avatar: user.avatar, name: user.name}],
           nome: titulo,
           descrição: descrição,
-          dateEntega: date,
+          dateEntrega: formataDate(date),
           status: false,
           users: pessoas,
           usersEntrege: [],
           documento: [],
-          nota: undefined,
+          nota: null,
           data: new Date()
         })
     
-        await updateDoc(usercollectionRef, {
+        await updateDoc(turmaCollectionRef, {
             atividades: arrayUnion({
-                turmaId: newAtividade.id,
+                turmaId: id,
                 titulo: titulo,
                 descrição: descrição,
-                dataEntrege: date
+                dataEntrege: formataDate(date)
             })
         })
         navigate(-1)
     }
 
-
     return(
-        <div className='criar-post'>
-            <form onSubmit={ handleSubmit }>
-                <h1>Criar Post</h1>
-                <label>Titulo: </label>
-
-                <input 
+    <div class="container">
+      <Navbar/>
+      <div class="row">
+        <ColunaTurmas/>
+        <div className='criar-container'>
+            <form className='criar-atividade' onSubmit={ handleSubmit }>
+                <h1 className='criar-titulo'>Criar Atividade</h1>
+                <label className='criar-item'>Titulo</label>
+                <input
+                    className='criar-campo'
                     type="text" value={titulo} required onChange={(e) => { handleTituloChange(e) }} 
                 />
-                <label>Descrição: </label>
+                <label className='criar-item'>Descrição</label>
                 <input
+                    className='criar-campo'
                     type="text" value={descrição} required onChange={(e) => { handleDescricaoChange(e) }} 
                 />
-
-                <label>Data de entrega: </label>
+                <label className='criar-item'>Data de entrega</label>
                 <input
+                    className='criar-campo'
                     type="date" value={date} required onChange={(e) => { handleDateChange(e) }} 
                 />
-                
+                <button className='criar-button'>Criar</button>
             </form>
         </div>
+      </div>
+      <Footer/>
+    </div>
     )
 }
